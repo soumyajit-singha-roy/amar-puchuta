@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============ BASE STYLES ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1a0011 0%, #2d0a1e 30%, #1a0020 60%, #0d0015 100%);
+  color: white;
+}
+
+/* ============ GRADIENT BACKGROUNDS ============ */
+.bg-romantic {
+  background: linear-gradient(135deg, #1a0011 0%, #2d0a1e 30%, #1a0020 60%, #0d0015 100%);
+}
+
+.bg-romantic-warm {
+  background: linear-gradient(135deg, #2d0a1e 0%, #4a1942 30%, #2d1b4e 60%, #1a0020 100%);
+}
+
+.bg-story-scene {
+  background: linear-gradient(180deg, #0a0010 0%, #1a0025 50%, #2d0a1e 100%);
+}
+
+/* ============ GLOW EFFECTS ============ */
+.glow-pink {
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.4),
+              0 0 30px rgba(244, 63, 94, 0.2),
+              0 0 60px rgba(244, 63, 94, 0.1);
+}
+
+.glow-pink-strong {
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.6),
+              0 0 40px rgba(244, 63, 94, 0.4),
+              0 0 80px rgba(244, 63, 94, 0.2);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(244, 63, 94, 0.5),
+               0 0 20px rgba(244, 63, 94, 0.3),
+               0 0 40px rgba(244, 63, 94, 0.2);
+}
+
+.text-glow-strong {
+  text-shadow: 0 0 20px rgba(244, 63, 94, 0.8),
+               0 0 40px rgba(244, 63, 94, 0.5),
+               0 0 80px rgba(244, 63, 94, 0.3);
+}
+
+/* ============ FLOATING HEARTS ============ */
+.floating-heart {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.15;
+  animation: floatHeart linear infinite;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ============ CONFETTI ============ */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -20px;
+  animation: confettiDrop linear forwards;
+  pointer-events: none;
+  z-index: 50;
+}
+
+@keyframes confettiDrop {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ============ SCREEN TRANSITIONS ============ */
+.screen-enter {
+  animation: screenFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes screenFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============ STORY SLIDE TRANSITIONS ============ */
+.slide-enter {
+  animation: slideFadeIn 1.2s ease-out forwards;
+}
+
+.slide-exit {
+  animation: slideFadeOut 0.8s ease-in forwards;
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* ============ BIG HEART FINALE ============ */
+.heart-glow {
+  filter: drop-shadow(0 0 20px rgba(244, 63, 94, 0.6))
+          drop-shadow(0 0 40px rgba(244, 63, 94, 0.4))
+          drop-shadow(0 0 80px rgba(244, 63, 94, 0.2));
+}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* ============ BUTTON HOVER EFFECTS ============ */
+.btn-romantic {
+  @apply relative overflow-hidden rounded-full font-semibold transition-all duration-300;
+  background: linear-gradient(135deg, #e11d48, #be185d, #9333ea);
+}
+
+.btn-romantic:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(244, 63, 94, 0.6),
+              0 0 60px rgba(244, 63, 94, 0.3);
+}
+
+.btn-romantic::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.0) 60%
+  );
+  transform: rotate(30deg);
+  transition: all 0.5s;
+  pointer-events: none;
+}
+
+.btn-romantic:hover::after {
+  left: 100%;
+}
+
+/* ============ PROGRESS BAR ============ */
+.progress-bar {
+  background: linear-gradient(90deg, #e11d48, #be185d, #9333ea);
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+  transition: width 0.5s ease;
+}
+
+/* ============ SPARKLE ============ */
+.sparkle-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: white;
+  animation: sparkleAnim 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkleAnim {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
